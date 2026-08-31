@@ -29,10 +29,19 @@ public class CommandLineController
         }
         return false;
     }
-    public void consultarCliente()
+    public void consultarCliente(string CPF)
     {
-        //imprimir o cliente se houver se nao imprimir cliente nao exite 
-    }
+        Conta conta = contaService.getConta(CPF);
+
+        if (conta == null)
+        {
+            Console.WriteLine("CPF informado não encontrado.");
+        }
+        else
+        {
+            Console.WriteLine($"\n\n{conta.CPF}\n - \n{conta.nome}\n - \n{conta.saldo}\n - \n{conta.tipoConta}\n\n");
+        }
+    }   
 
     public void deletarCliente()
     {

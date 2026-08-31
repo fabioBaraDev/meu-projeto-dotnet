@@ -18,7 +18,7 @@ class Program
             {
                 case "1":
                     Console.WriteLine("Você escolheu cadastrar.");
-                
+                    {
                     Console.Write("Digite o nome do cliente: ");
                     string nome = Console.ReadLine();
 
@@ -43,11 +43,17 @@ class Program
                     }
 
                     break;
-
+                    }
                 case "2":
                     Console.WriteLine("Você escolheu consultar.");
-                    commandLineController.consultarCliente();
+                    {
+                    Console.Write("Digite o CPF do cliente que deseja consultar: ");
+                    string CPF = Console.ReadLine();
+
+                    commandLineController.consultarCliente(CPF);
+                    
                     break;
+                    }
 
                 case "3":
                     Console.WriteLine("Você escolheu excluir.");
