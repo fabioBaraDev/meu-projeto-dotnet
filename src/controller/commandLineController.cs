@@ -43,9 +43,33 @@ public class CommandLineController
         }
     }   
 
-    public void deletarCliente()
+    public void deletarCliente(string CPF)
     {
-        
+        Conta conta = contaService.getConta(CPF);
+
+        if (conta == null)
+        {
+            Console.WriteLine("O CPF inserido não existe no sistema.");
+            return;
+        }
+        else
+        {
+            Console.WriteLine("\nCPF Localizado!\n");
+            Console.Write("Digite 1 para deletar: ");
+            Console.Write("Digite 2 para cancelar: ");
+    
+            string escolha = Console.ReadLine();
+
+            if (escolha == "1")
+            {
+                contaService.deletarConta(CPF);
+                Console.WriteLine("\nCPF deletado com Sucesso!\n");
+            }
+            else
+            {
+                Console.WriteLine("Remoção cancelada.");
+            }
+        }
     }
 
     public void atualizarCliente()

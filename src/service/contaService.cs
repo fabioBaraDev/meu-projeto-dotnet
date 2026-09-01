@@ -23,7 +23,9 @@ class ContaService
         Console.WriteLine($"Inseriu {conta.nome} com sucesso");
     } 
 
-    //implementar consultarCliente retornar um Cliente ou NULL
-    //usar o respositorio.getConta para procurar o cliente
-    
+    public bool deletarConta(string CPF)
+    {
+        bool resultado = this.repository.deletarConta(CPF);
+        return resultado;
+    } 
 }

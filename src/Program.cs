@@ -51,14 +51,19 @@ class Program
                     string CPF = Console.ReadLine();
 
                     commandLineController.consultarCliente(CPF);
-                    
+
                     break;
                     }
 
                 case "3":
                     Console.WriteLine("Você escolheu excluir.");
-                    commandLineController.deletarCliente();
+                    {
+                        Console.WriteLine("Digite o CPF do cliente que deseja excluir: ");
+                        string CPF = Console.ReadLine();
+
+                        commandLineController.deletarCliente(CPF);
                     break;
+                    }
                 
                 // ao inves de se atualizar qualquer coisa
                 // cria um case so para atualizar nome ou saldo ou tipoconta

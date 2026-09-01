@@ -24,4 +24,17 @@ class ContaRepository
             Console.WriteLine($"{c.CPF} - {c.nome} - {c.saldo} - {c.tipoConta}");
         }
     }
+
+    public bool deletarConta(string CPF)
+    {
+        Conta conta = getConta(CPF);
+        
+        if (conta == null)
+        {
+            return false;
+        }
+
+        contas.Remove(conta);
+        return true;
+    }
 }
