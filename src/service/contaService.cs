@@ -28,4 +28,19 @@ class ContaService
         bool resultado = this.repository.deletarConta(CPF);
         return resultado;
     } 
+
+    public bool atualizarNome(string CPF, string novoNome)
+    {
+        return this.repository.atualizarNome(CPF, novoNome);
+    }
+
+    public bool atualizarSaldo(string CPF, double novoSaldo)
+    {
+        return this.repository.atualizarSaldo(CPF, novoSaldo);
+    }
+
+    public bool atualizarTipoConta(string CPF, TipoConta novoTipoConta)
+    {
+        return this.repository.atualizarTipoConta(CPF, novoTipoConta);
+    }
 }

@@ -37,4 +37,43 @@ class ContaRepository
         contas.Remove(conta);
         return true;
     }
+
+    public bool atualizarNome(string CPF, string novoNome)
+    {
+        Conta conta = getConta(CPF);
+
+        if (conta == null)
+        {
+            return false;
+        }
+
+        conta.atualizarNome(novoNome);
+        return true;
+    }
+
+    public bool atualizarSaldo(string CPF, double novoSaldo)
+    {
+        Conta conta = getConta(CPF);
+
+        if (conta == null)
+        {
+            return false;
+        }
+
+        conta.atualizarSaldo(novoSaldo);
+        return true;
+    }
+
+    public bool atualizarTipoConta(string CPF, TipoConta novoTipoConta)
+    {
+        Conta conta = getConta(CPF);
+
+        if (conta == null)
+        {
+            return false;
+        }
+
+        conta.atualizarTipoConta(novoTipoConta);
+        return true;
+    }
 }
