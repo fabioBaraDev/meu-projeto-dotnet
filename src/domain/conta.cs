@@ -15,6 +15,21 @@ class Conta
         this.saldo = saldo;
         this.tipoConta = tipoConta;
     }
+
+    public void atualizarNome(string novoNome)
+    {
+        nome = novoNome;
+    }
+
+    public void atualizarSaldo(double novoSaldo)
+    {
+        saldo = novoSaldo;
+    }
+
+    public void atualizarTipoConta(TipoConta novoTipoConta)
+    {
+        tipoConta = novoTipoConta;
+    }
 }
 
 public enum TipoConta

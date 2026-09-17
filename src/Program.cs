@@ -69,8 +69,10 @@ class Program
                 // cria um case so para atualizar nome ou saldo ou tipoconta
                 case "4":
                     Console.WriteLine("Você escolheu atualizar.");
-                    commandLineController.atualizarCliente();
-                    break;
+                    {
+                        commandLineController.atualizarCliente();
+                        break;
+                    }
                 
                 case "5":
                     Console.WriteLine("Adios");

@@ -35,7 +35,7 @@ public class CommandLineController
 
         if (conta == null)
         {
-            Console.WriteLine("CPF informado não encontrado.");
+            Console.WriteLine("O CPF inserido não existe no sistema.");
         }
         else
         {
@@ -72,9 +72,101 @@ public class CommandLineController
         }
     }
 
+    private Conta buscarContaPorCPF()
+    {
+        Console.Write("Digite o CPF do cliente: ");
+        string CPF = Console.ReadLine();
+
+        Conta conta = contaService.getConta(CPF);
+
+        if (conta == null)
+        {
+            Console.WriteLine("O CPF inserido não existe no sistema.");
+        }
+
+        return conta;
+    }
+
+    
     public void atualizarCliente()
     {
-        
+        Console.WriteLine("1 - Atualizar Nome");
+        Console.WriteLine("2 - Atualizar Saldo");
+        Console.WriteLine("3 - Atualizar Tipo de Conta");
+        Console.WriteLine("4 - Retornar");
+        Console.WriteLine("Escolha uma opção: ");
+        string opcao = Console.ReadLine();
+
+        if (opcao == "1")
+        {
+            Conta conta = buscarContaPorCPF();
+
+            if (conta == null)
+            {
+                return;
+            }
+
+            Console.Write("CPF Localizado! Digite o novo nome: ");
+            string novoNome = Console.ReadLine();
+
+            contaService.atualizarNome(conta.CPF, novoNome);
+            Console.WriteLine("Nome atualizado com sucesso!");
+        }
+
+        else if (opcao == "2")
+        {
+            Conta conta = buscarContaPorCPF();
+
+            if (conta == null)
+            {
+                return;
+            }
+
+            Console.Write("CPF Localizado! Digite o novo Saldo: ");
+            bool saldoValido = double.TryParse(Console.ReadLine(), out double novoSaldo);
+
+            if (saldoValido)
+            {
+                contaService.atualizarSaldo(conta.CPF, novoSaldo);
+                Console.WriteLine("Saldo atualizado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Valor inválido, atualização não realizada.");
+            }
+        }
+
+        else if (opcao == "3")
+        {
+            Conta conta = buscarContaPorCPF();
+
+            if (conta == null)
+            {
+                return;
+            }
+
+            Console.Write("CPF Localizado! Digite o novo Tipo de Conta: ");
+            bool tipoContaValido = Enum.TryParse(Console.ReadLine(), out TipoConta novoTipoConta);
+
+            if (tipoContaValido)
+            {
+                contaService.atualizarTipoConta(conta.CPF, novoTipoConta);
+                Console.WriteLine("Tipo de conta atualizado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine("Valor inválido, atualização não realizada.");
+            }
+        }
+
+        else if (opcao == "4")
+        {
+            return;
+        }
+        else
+        {
+            Console.WriteLine("Opção inválida.");
+        }
     }
 
 
